@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Thêm mới</title>
+        <%- include ../layout/head %>
+        <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
+        <script>tinymce.init({selector:'textarea'});</script>
+    </head>
+    <body>
+        <div class="container">
+            <%- include ../layout/nav%>
+            <div class="col-md-6 pagination-centered" >
+                    <!-- Panel Static Labels -->
+                    <div class="panel">
+                      <div class="panel-heading">
+                        <h3 class="panel-title"><b>Add New Post</b></h3>
+                      </div>
+                      <% if (data && data.error) {%>
+                        <div id="login-alert" class="alert alert-danger col-sm-12">
+                            <%= data.error %>
+                        </div>
+                        <% } %>
+                      <div class="panel-body container-fluid ">
+                        <form autocomplete="off" method="POST" action="/admin/post/new">
+                          <div class="form-group form-material" data-plugin="formMaterial">
+                            <label class="form-control-label" for="inputText">Title</label>
+                            <input type="text" class="form-control" id="inputText" name="title" placeholder="Title">
+                          </div>
+                          <div class="form-group form-material" data-plugin="formMaterial">
+                            <label class="form-control-label" for="inputEmail">Content</label>
+                            <textarea type="text" class="form-control" id="inputEmail" name="content" placeholder="Content"></textarea>
+                          </div>
+                          <div class="form-group form-material" data-plugin="formMaterial">
+                            <label class="form-control-label" for="inputPassword">Author</label>
+                            <input type="text" class="form-control" id="inputPassword" name="author" placeholder="Author">
+                          </div>  
+                          <div>
+                              <input type="submit" value="Add" class="btn btn-success"/>
+                          </div>                           
+                        </form>
+                      </div>
+                    </div>
+                    <!-- End Panel Static Labels -->
+                  </div>
+        </div>
+    </body>
+</html>

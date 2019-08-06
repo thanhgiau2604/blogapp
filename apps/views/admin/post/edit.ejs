@@ -1,0 +1,50 @@
+<html>
+
+<head>
+  <title>Chỉnh sửa</title>
+  <!-- <%- include ../layout/head %> -->
+  <%- include ../layout/head%>
+  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
+  <script>tinymce.init({ selector: 'textarea' });</script>
+</head>
+
+<body>
+  <div class="container">
+    <%- include ../layout/nav%>
+    <div class="col-md-6 pagination-centered">
+      <!-- Panel Static Labels -->
+      <div class="panel">
+        <div class="panel-heading">
+          <h3 class="panel-title"><b>Chỉnh sửa bài viết</b></h3>
+        </div>
+        <% if (data && data.error) {%>
+        <div id="login-alert" class="alert alert-danger col-sm-12">
+          <%= data.error %>
+        </div>
+        <% } %>
+        <div class="panel-body container-fluid ">
+          <form role="form">
+            <input type="hidden" class="id" name="id" value="<% if (data && data.post) {%> <%=data.post.id%> <%}%>"/>
+            <div class="form-group">
+                <label class="form-control-label" for="inputText">Title</label>
+                <input type="text" class="form-control title" name="title" placeholder="Title" value="<% if (data && data.post) {%> <%=data.post.title%> <%}%>"/>
+             </div>
+               <div class="form-group">
+                 <label class="form-control-label" for="content">Content</label>
+                 <textarea type="text" class="form-control content" id="content" name="content" placeholder="Content"><% if (data && data.post) {%> <%=data.post.content%> <%}%></textarea>
+               </div>
+               <div class="form-group">
+                  <label class="form-control-label" for="inputPassword">Author</label>
+                  <input type="text" class="form-control author" id="inputPassword" name="author" placeholder="Author" value="<% if (data && data.post) {%> <%=data.post.author%> <%}%>">
+                </div>  
+               <input type="button" class="btn btn-success post_edit" value="Edit"/>                                     
+          </form>
+        </div>
+        
+        </div>
+                        <!-- End Panel Static Labels -->
+       </div>
+      </div>
+      <script src="/static/js/post.js"></script> 
+    </body>
+</html>
